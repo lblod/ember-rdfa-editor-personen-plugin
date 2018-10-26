@@ -92,7 +92,8 @@ const RdfaEditorPersonenPlugin = Service.extend({
 
     //start loading
     let queryParams = {
-      'filter[is-aangesteld-als][bekleedt][bevat-in][:uri:]': bestuursorgaanUri,
+      'filter[is-kandidaat-voor][rechtstreekse-verkiezing][stelt-samen][:uri:]': bestuursorgaanUri,
+      // 'filter[is-aangesteld-als][bekleedt][bevat-in][:uri:]': bestuursorgaanUri,
       page: { size: 10000 }
     };
 
