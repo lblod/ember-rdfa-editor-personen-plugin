@@ -57,12 +57,12 @@ const RdfaEditorPersonenPlugin = Service.extend({
       const hints = yield this.generateHintsForContext(context);
       if(hints.length == 0) continue;
 
-      hintsRegistry.removeHintsInRegion(context.region, hrId, this.get('who'));
+      hintsRegistry.removeHintsInRegion(context.region, hrId, this.who);
       cards.push(...this.generateCardsForHints(rdfaProperties, hrId, hintsRegistry, editor, hints));
     }
 
     if(cards.length > 0){
-      hintsRegistry.addHints(hrId, this.get('who'), cards);
+      hintsRegistry.addHints(hrId, this.who, cards);
     }
   }).restartable(),
 
@@ -84,7 +84,7 @@ const RdfaEditorPersonenPlugin = Service.extend({
       return;
 
     const bestuursorgaanUri = node.attributes.resource.value;
-    if(this.get('bestuursorgaanInTijd') == bestuursorgaanUri)
+    if(this.bestuursorgaanInTijd == bestuursorgaanUri)
       return;
 
     this.set('bestuursorgaanInTijd', bestuursorgaanUri);
@@ -96,7 +96,7 @@ const RdfaEditorPersonenPlugin = Service.extend({
       page: { size: 10000 }
     };
 
-    await this.get('store').query('persoon', queryParams);
+    await this.store.query('persoon', queryParams);
   },
 
   /**
@@ -124,7 +124,7 @@ const RdfaEditorPersonenPlugin = Service.extend({
       return (person.fullName || '').toLowerCase().startsWith(token.sanitizedString.toLowerCase());
     };
 
-    return this.get('store').peekAll('persoon').filter(person => {
+    return this.store.peekAll('persoon').filter(person => {
       return startsFullName(person) ||  startsGebruikteVoornaam(person) || startsAchternaam(person);
     });
 
@@ -205,7 +205,7 @@ const RdfaEditorPersonenPlugin = Service.extend({
    * @private
    */
   async generateHintsForContext(context){
-    const tokens = await this.get('memoizedTokenize')(context.text);
+    const tokens = await this.memoizedTokenize(context.text);
 
     let allHints = [];
 
