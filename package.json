@@ -1,13 +1,16 @@
 {
-  "name": "ember-rdfa-editor-personen-plugin",
+  "name": "@lblod/ember-rdfa-editor-personen-plugin",
   "version": "0.0.0",
-  "description": "The default blueprint for ember-cli addons.",
+  "description": "RDFa editor plugin to insert persons in the editor",
   "keywords": [
     "ember-addon"
   ],
-  "repository": "",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lblod/ember-rdfa-editor-personen-plugin.git"
+  },
   "license": "MIT",
-  "author": "",
+  "author": "redpencil.io",
   "directories": {
     "doc": "doc",
     "test": "tests"
