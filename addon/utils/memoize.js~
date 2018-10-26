@@ -1,3 +1,0 @@
-export default function memoize() {
-  return true;
-}
