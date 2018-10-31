@@ -1,23 +1,26 @@
-<div class="modal-dialog__header">
-  <div class="grid">
-    <div class="col--10-12">
-      <strong>Voeg {{info.person.fullName}} toe als</strong>
-    </div>
-    <div class="col--2-12 u-align-right">
-      <a class="link--icon--close" href="#"> {{!-- TODO: action close {{action "remove" result.origModel}} --}}
-        <span class="u-visually-hidden">Venster sluiten</span>
-      </a>
+<div class="modal-dialog modal-dialog--small">
+  <div class="modal-dialog__header">
+    <div class="grid">
+      <div class="col--10-12">
+        <strong>Voeg {{info.person.fullName}} toe</strong>
+      </div>
+{{!--       <div class="col--2-12 u-align-right">
+        <a class="link--icon--close" href="#">
+          <span class="u-visually-hidden">Venster sluiten</span>
+        </a>
+      </div> --}}
     </div>
   </div>
-</div>
-<div class="modal-dialog__content modal-dialog__content--sectioned">
-  <ul class="link-list link-list--bordered">
-    {{#each personCombinedWithProperties as |mp| }}
-      <li class="link-list__item">
-        <a class="" onclick={{action 'refer' mp}} style="width:70%; float:left;"> als {{mp.prop.label}}</a>
-        <a class="" onclick={{action 'extend' mp}}>(uitgebreid)</a>
-      </li>
-    {{/each}}
-  </ul>
+  <div class="modal-dialog__content modal-dialog__content--sectioned">
+    <ul>
+      {{#each personCombinedWithProperties as |mp| }}
+        <li class="u-hr u-padding--round--tiny">
+          <a class="button button--narrow" onclick={{action 'refer' mp}}> Voeg toe als {{mp.prop.label}}</a>
+          <a class="button button--narrow button--link" onclick={{action 'extend' mp}}>Voeg uitgebreide gegevens toe</a>
+          <div class="u-hr"></div>
+        </li>
+      {{/each}}
+    </ul>
+  </div>
 </div>
 {{yield}}
