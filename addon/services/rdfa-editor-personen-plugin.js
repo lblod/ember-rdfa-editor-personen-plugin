@@ -206,7 +206,7 @@ const RdfaEditorPersonenPlugin = Service.extend({
    * @private
    */
   async generateHintsForContext(context){
-    const tokens = await this.memoizedTokenize(context.text);
+    const tokens = await this.memoizedTokenize(context.text || '');
 
     let allHints = [];
 
