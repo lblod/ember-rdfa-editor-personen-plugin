@@ -1,26 +1,15 @@
-<div class="modal-dialog modal-dialog--small">
-  <div class="modal-dialog__header">
-    <div class="grid">
-      <div class="col--10-12">
-        <strong>Voeg {{info.person.fullName}} toe</strong>
-      </div>
-{{!--       <div class="col--2-12 u-align-right">
-        <a class="link--icon--close" href="#">
-          <span class="u-visually-hidden">Venster sluiten</span>
-        </a>
-      </div> --}}
-    </div>
-  </div>
-  <div class="modal-dialog__content modal-dialog__content--sectioned">
-    <ul>
-      {{#each personCombinedWithProperties as |mp| }}
-        <li class="u-hr u-padding--round--tiny">
-          <a class="button button--narrow" onclick={{action 'refer' mp}}> Voeg toe als {{mp.prop.label}}</a>
-          <a class="button button--narrow button--link" onclick={{action 'extend' mp}}>Voeg uitgebreide gegevens toe</a>
-          <div class="u-hr"></div>
-        </li>
-      {{/each}}
-    </ul>
-  </div>
-</div>
+<Say::Hint @size="small" @type="sectioned" as |hint|>
+	<hint.header>
+		Wil u <strong>{{info.person.fullName}}</strong> toevoegen?
+	</hint.header>
+	<hint.list as |list|>
+    {{#each personCombinedWithProperties as |mp| }}
+      <list.item>
+				<Say::Button @width="narrow" @onClick={{action 'refer' mp}}>
+					Voeg toe als {{mp.prop.label}}
+				</Say::Button>
+      </list.item>
+    {{/each}}
+  </hint.list>
+</Say::Hint>
 {{yield}}
