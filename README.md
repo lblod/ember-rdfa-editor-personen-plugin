@@ -1,5 +1,6 @@
 ember-rdfa-editor-personen-plugin
 ==============================================================================
+:warning: This ember addon is no longer maintained.
 
 [Short description of the addon.]
 
